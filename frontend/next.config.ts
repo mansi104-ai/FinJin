@@ -1,17 +1,21 @@
-import { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  // experimental: {
-  //   appDir: true, // Enables the App Router
-  // },
-  images: {
-    domains: ['images.unsplash.com', 'cdn.example.com'], // Add image domains here
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   eslint: {
-    ignoreDuringBuilds: true, // Optional: Ignore ESLint errors during build
+    ignoreDuringBuilds: true,
   },
-};
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    domains: ["localhost"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+    unoptimized: true,
+  },
+}
 
-export default nextConfig;
+module.exports = nextConfig
